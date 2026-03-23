@@ -1,0 +1,89 @@
+# ============================================================
+#  Job Bot – Configuration
+# ============================================================
+
+# ── Provider IA pour les lettres de motivation ───────────────
+# Choix : openai | groq | ollama | anthropic
+#
+#  openai    → ChatGPT. Clé API sur : https://platform.openai.com/api-keys
+#              (différent de l'abonnement ChatGPT Plus – nécessite un compte API)
+#
+#  groq      → 100% GRATUIT. Clé API sur : https://console.groq.com
+#              Modèle llama3-70b, très rapide, qualité excellente
+#
+#  ollama    → 100% GRATUIT et LOCAL. Installer sur : https://ollama.com
+#              Puis lancer : ollama pull llama3
+#              Aucune clé API nécessaire, tourne sur ton PC
+#
+#  anthropic → Claude. Clé API sur : https://console.anthropic.com
+
+ai:
+  provider: "groq"           # ← CHANGE ICI : openai | groq | ollama | anthropic
+  api_key:  "VOTRE_CLE_ICI"  # Ignorée si provider = ollama
+  model:    ""               # Laisser vide pour utiliser le modèle par défaut
+  # Modèles par défaut :
+  #   openai    → gpt-4o-mini
+  #   groq      → llama3-70b-8192
+  #   ollama    → llama3
+  #   anthropic → claude-haiku-4-5-20251001
+
+# --- Ton profil ---
+profile:
+  first_name: "Prénom"
+  last_name:  "Nom"
+  email:      "ton@email.com"
+  phone:      "0600000000"
+  cv_path:    "data/cv.pdf"          # chemin vers ton CV (PDF)
+  linkedin:   "https://linkedin.com/in/ton-profil"  # optionnel
+  portfolio:  ""                      # optionnel
+
+# --- Résumé de ton profil (pour l'IA) ---
+profile_summary: |
+  Développeur fullstack avec 3 ans d'expérience en Python et React.
+  Passionné par les architectures cloud et les projets à fort impact.
+  Recherche un poste en CDI, région parisienne ou full remote.
+
+# --- Paramètres de recherche ---
+search:
+  keywords:
+    - "Développeur Python"
+    - "Développeur Fullstack"
+  location: "Paris"
+  radius_km: 30
+  contract_types:
+    - CDI
+    - CDD
+  remote: true          # inclure les offres remote
+  max_jobs_per_run: 20  # nombre max de candidatures par lancement
+
+# --- Plateformes activées ---
+platforms:
+  indeed:
+    enabled: true
+    email:    "ton@email.com"
+    password: "VOTRE_MOT_DE_PASSE"
+  wttj:
+    enabled: true
+    email:    "ton@email.com"
+    password: "VOTRE_MOT_DE_PASSE"
+  hellowork:
+    enabled: true
+    email:    "ton@email.com"
+    password: "VOTRE_MOT_DE_PASSE"
+
+# --- Comportement du bot ---
+bot:
+  headless: false           # true = invisible, false = voir le navigateur
+  min_delay_seconds: 3      # délai minimum entre actions (anti-bot)
+  max_delay_seconds: 8      # délai maximum
+  typing_speed_wpm: 60      # vitesse de frappe simulée
+  screenshot_on_error: true # capture d'écran en cas d'erreur
+
+# --- Filtres anti-spam ---
+filters:
+  skip_if_already_applied: true
+  skip_keywords:            # annonces à ignorer si ces mots sont présents
+    - "stage"
+    - "alternance"
+    - "bénévolat"
+  min_salary: 35000         # salaire annuel minimum (0 = pas de filtre)

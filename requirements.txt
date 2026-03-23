@@ -1,0 +1,18 @@
+playwright==1.43.0
+pyyaml==6.0.1
+rich==13.7.1
+click==8.1.7
+python-dotenv==1.0.1
+aiofiles==23.2.1
+SQLAlchemy==2.0.29
+tenacity==8.2.3
+fake-useragent==1.5.1
+Pillow==10.3.0
+
+# ── Providers IA (installer selon ton choix) ──────────────────
+# Groq (GRATUIT) ou OpenAI (ChatGPT)
+openai>=1.30.0          # requis pour OpenAI ET Ollama (même lib)
+groq>=0.9.0             # requis pour Groq
+
+# Décommenter si tu utilises Claude :
+# anthropic>=0.25.0
